@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Voice-to-Text</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="container flex justify-between items-center py-8" role="banner">
+        <h1 class="app-title">Simple Voice-to-Text</h1>
+        <div id="timer" aria-label="Session timer" class="timer">00:00</div>
+    </header>
+
+    <!-- Main -->
+    <main class="container flex flex-col items-center gap-16" role="main">
+        <!-- Mic Button -->
+        <button id="micButton" class="btn btn--primary btn--lg mic-btn" aria-label="Start recording">
+            <span id="micIcon" aria-hidden="true">🎤</span>
+        </button>
+        <p id="statusMessage" class="status-text text-center">Ready to record – click the microphone</p>
+
+        <!-- Transcript Area -->
+        <div id="transcript" class="transcript card p-16" role="log" aria-live="polite" aria-label="Live transcript"></div>
+    </main>
+
+    <!-- Footer Controls -->
+    <footer class="container flex justify-center gap-16 py-16" role="contentinfo">
+        <button id="clearBtn" class="btn btn--secondary" disabled>Clear</button>
+        <button id="exportBtn" class="btn btn--secondary" disabled>Export</button>
+        <button id="settingsBtn" class="btn btn--secondary">Settings</button>
+    </footer>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal hidden" role="dialog" aria-labelledby="settingsTitle" aria-hidden="true">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content card p-16">
+            <h2 id="settingsTitle" class="mb-16">Settings</h2>
+            <div class="form-group">
+                <label for="languageSelect" class="form-label">Language</label>
+                <select id="languageSelect" class="form-control">
+                    <option value="auto">🌐 Auto Detect</option>
+                    <option value="hi-IN">🇮🇳 Hindi</option>
+                    <option value="en-US">🇺🇸 English</option>
+                    <option value="mixed">🗣️ Hinglish</option>
+                </select>
+            </div>
+            <div class="flex justify-end gap-8 mt-16">
+                <button id="closeSettings" class="btn btn--secondary">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast for errors & info -->
+    <div id="toast" class="toast hidden" role="alert"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
